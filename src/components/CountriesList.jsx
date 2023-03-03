@@ -6,14 +6,20 @@ function CountriesList(props) {
 
   return (
     <div>
-      {countries.map(country => (
-        <div key={country.alpha2Code}>
-          <Link to={`/country/${country.alpha3Code}`}>
-            {country.name.common}
-          </Link>
-            
+      {countries.length > 0 && (
+        <div>
+          {countries.map((country) => {
+            return (
+              <div key={country.alpha2Code}>
+                <Link to={`country/${country.alpha3Code}`}>
+                  {country.name.common}
+                </Link>
+              </div>
+            );
+          })}
         </div>
-      ))}
+      )}
+      {countries.length === 0 && <h2>Loading...</h2>}
     </div>
   );
 }
